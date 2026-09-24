@@ -8,5 +8,8 @@ class Settings(BaseSettings):
     # Where the PostgreSQL database lives
     database_url: str = "postgresql+psycopg://school:school@localhost:5432/school"
 
+    # Printed at the top of every receipt
+    school_name: str = "Sri Triveni High School"
+
 
 settings = Settings()
