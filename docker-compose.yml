@@ -1,0 +1,17 @@
+# Runs PostgreSQL 16 and loads the schema + fictional demo data on first start.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: school
+      POSTGRES_PASSWORD: school
+      POSTGRES_DB: school
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backend/db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./backend/db/seed_demo.sql:/docker-entrypoint-initdb.d/02_seed_demo.sql:ro
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
