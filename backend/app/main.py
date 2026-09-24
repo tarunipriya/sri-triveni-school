@@ -1,7 +1,7 @@
 """Entry point of the backend API."""
 from fastapi import FastAPI
 
-from app.routers import fees
+from app.routers import fees, payments
 
 app = FastAPI(
     title="Sri Triveni High School API",
@@ -10,6 +10,7 @@ app = FastAPI(
 )
 
 app.include_router(fees.router)
+app.include_router(payments.router)
 
 
 @app.get("/health", tags=["system"])
